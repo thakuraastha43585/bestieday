@@ -22,37 +22,30 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Nunito', sans-serif; background: var(--gingham); min-height: 100vh; overflow-x: hidden; }
 
-/* FLOATIES */
 .floaties { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
 .floaty { position: absolute; font-size: 1.8rem; animation: floatAround linear infinite; opacity: 0.35; }
 @keyframes floatAround { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.35; } 90% { opacity: 0.35; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
 
-/* PAGES */
 .page { display: none; min-height: 100vh; position: relative; z-index: 1; }
 .page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; animation: pageIn 0.6s cubic-bezier(0.34,1.56,0.64,1); }
 @keyframes pageIn { from { opacity: 0; transform: scale(0.85) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 
-/* CARD */
 .card { background: var(--white); border-radius: 24px; padding: 32px 28px; box-shadow: 0 8px 40px rgba(201,24,74,0.15), 0 2px 8px rgba(0,0,0,0.08); border: 3px solid var(--pink-soft); width: 100%; max-width: 460px; position: relative; }
 
-/* MUSIC */
 #musicBtn { position: fixed; top: 16px; right: 16px; z-index: 999; background: var(--pink); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 15px rgba(255,143,171,0.5); transition: transform 0.3s; display: flex; align-items: center; justify-content: center; }
 #musicBtn:hover { transform: scale(1.15); }
 #musicBtn.muted { background: #ccc; }
 
-/* TYPOGRAPHY */
 .title-main { font-family: 'Pacifico', cursive; font-size: 2rem; color: var(--red-dark); text-align: center; line-height: 1.3; text-shadow: 2px 3px 0 rgba(201,24,74,0.2); }
 .subtitle { font-size: 1rem; color: #888; text-align: center; margin-top: 8px; font-weight: 600; }
 .section-label { font-size: 0.85rem; font-weight: 800; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
 
-/* INPUTS */
 .input-group { margin-bottom: 18px; }
 .input-field { width: 100%; padding: 14px 18px; border: 2.5px solid var(--pink-soft); border-radius: 14px; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700; color: var(--red-dark); background: var(--cream); transition: all 0.3s; outline: none; }
 .input-field:focus { border-color: var(--pink); box-shadow: 0 0 0 4px rgba(255,143,171,0.2); background: white; }
 .input-field::placeholder { color: #ccc; font-weight: 600; }
 textarea.input-field { resize: vertical; min-height: 100px; }
 
-/* BUTTONS */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 32px; border: none; border-radius: 100px; font-family: 'Nunito', sans-serif; font-size: 1.05rem; font-weight: 900; cursor: pointer; transition: all 0.3s; text-decoration: none; width: 100%; }
 .btn-primary { background: linear-gradient(135deg, var(--pink) 0%, var(--red) 100%); color: white; box-shadow: 0 6px 20px rgba(201,24,74,0.35); }
 .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(201,24,74,0.4); }
@@ -62,24 +55,20 @@ textarea.input-field { resize: vertical; min-height: 100px; }
 .btn-outline { background: transparent; border: 2.5px solid var(--pink); color: var(--red); }
 .btn-sm { padding: 10px 20px; font-size: 0.9rem; width: auto; }
 
-/* STICKERS */
 .sticker { position: absolute; font-size: 1.6rem; animation: wiggle 3s ease-in-out infinite; pointer-events: none; }
 @keyframes wiggle { 0%,100% { transform: rotate(-8deg) scale(1); } 50% { transform: rotate(8deg) scale(1.1); } }
 .ribbon-top { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--red); color: white; padding: 5px 22px; border-radius: 100px; font-size: 0.8rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
 .ribbon-top::before, .ribbon-top::after { content: '♥'; margin: 0 4px; }
 
-/* SURPRISE SLIDES */
 #surprisePage { background: var(--gingham); }
 .surprise-slide { display: none; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; padding: 20px; animation: pageIn 0.6s ease; text-align: center; }
 .surprise-slide.active { display: flex; }
 
-/* KITTEN */
 .kitten-box { background: white; border-radius: 30px; padding: 30px 24px; max-width: 380px; width: 100%; box-shadow: 0 10px 50px rgba(201,24,74,0.2); border: 3px solid var(--pink-soft); position: relative; overflow: hidden; }
 .kitten-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(90deg, var(--red) 0, var(--red) 20px, var(--pink) 20px, var(--pink) 40px, var(--yellow) 40px, var(--yellow) 60px); }
 .cat-emoji { font-size: 5rem; display: block; animation: bounce 1s ease-in-out infinite; }
 @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
-/* CERTIFICATE */
 .certificate { background: #FFF9F0; border: 4px solid var(--red); border-radius: 20px; padding: 32px 28px; max-width: 440px; width: 100%; text-align: center; box-shadow: 0 8px 30px rgba(139,0,40,0.2), inset 0 0 0 8px rgba(201,24,74,0.05); position: relative; }
 .cert-corner { position: absolute; font-size: 1.8rem; animation: spin-slow 8s linear infinite; }
 @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -93,126 +82,64 @@ textarea.input-field { resize: vertical; min-height: 100px; }
 .cert-name { font-family: 'Pacifico', cursive; font-size: 1.4rem; color: var(--red-dark); margin: 8px 0; }
 .seal { width: 70px; height: 70px; background: var(--red-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 16px auto 0; color: white; font-size: 0.6rem; font-weight: 900; text-align: center; text-transform: uppercase; letter-spacing: 1px; border: 3px solid var(--yellow); line-height: 1.4; }
 
-/* MESSAGE CARD */
 .message-card { background: var(--cream); border-left: 6px solid var(--pink); border-radius: 0 18px 18px 0; padding: 24px 22px; max-width: 440px; width: 100%; box-shadow: 4px 4px 20px rgba(255,143,171,0.25); position: relative; }
 .quote-mark { font-size: 4rem; color: var(--pink-soft); font-family: serif; line-height: 0; position: absolute; top: 10px; left: 12px; }
 .message-text { font-family: 'Dancing Script', cursive; font-size: 1.25rem; color: #444; line-height: 1.9; padding-left: 30px; }
 
-/* CONFETTI */
 .confetti-piece { position: fixed; width: 10px; height: 10px; border-radius: 2px; animation: confettiFall linear forwards; pointer-events: none; z-index: 9999; }
 @keyframes confettiFall { 0% { transform: translateY(-20px) rotateZ(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotateZ(720deg); opacity: 0; } }
 
-/* PRICING */
-.price-card { background: white; border-radius: 24px; padding: 28px 24px; max-width: 460px; width: 100%; border: 3px solid var(--yellow); box-shadow: 0 8px 40px rgba(201,24,74,0.12); position: relative; }
-.price-tag { font-family: 'Pacifico', cursive; font-size: 2.8rem; color: var(--red-dark); text-align: center; }
-.price-original { text-decoration: line-through; color: #aaa; font-size: 1.3rem; font-weight: 700; text-align: center; }
-.price-features { list-style: none; margin: 16px 0; }
-.price-features li { padding: 8px 0; border-bottom: 1px dashed var(--pink-soft); font-weight: 700; color: #555; display: flex; align-items: center; gap: 8px; }
-.price-features li::before { content: '✨'; }
-.coupon-row { display: flex; gap: 8px; margin-top: 16px; }
-.coupon-input { flex: 1; padding: 12px 16px; border: 2.5px solid var(--pink-soft); border-radius: 12px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; color: var(--red-dark); outline: none; text-transform: uppercase; }
-.coupon-input:focus { border-color: var(--pink); }
-.coupon-msg { font-size: 0.85rem; margin-top: 8px; font-weight: 700; text-align: center; }
-.coupon-success { color: green; }
-.coupon-error { color: var(--red); }
 
-/* SUCCESS */
-.success-card { background: white; border-radius: 30px; padding: 36px 28px; max-width: 460px; width: 100%; text-align: center; box-shadow: 0 12px 50px rgba(201,24,74,0.2); border: 3px solid var(--pink-soft); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SUCCESS LINK */
 .link-box { background: var(--cream); border: 2.5px dashed var(--pink); border-radius: 14px; padding: 14px 18px; font-weight: 800; color: var(--red-dark); font-size: 0.9rem; word-break: break-all; margin: 16px 0; cursor: pointer; transition: background 0.2s; }
 .link-box:hover { background: var(--pink-soft); }
+.success-card { background: white; border-radius: 30px; padding: 36px 28px; max-width: 460px; width: 100%; text-align: center; box-shadow: 0 12px 50px rgba(201,24,74,0.2); border: 3px solid var(--pink-soft); }
 
-/* LOADING */
 #loadingOverlay { display: none; position: fixed; inset: 0; z-index: 9998; background: rgba(255,255,255,0.9); align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
 #loadingOverlay.show { display: flex; }
 .loading-cat { font-size: 4rem; animation: bounce 0.6s ease-in-out infinite; }
 .loading-text { font-family: 'Pacifico', cursive; color: var(--red); font-size: 1.2rem; }
 
-/* TOAST */
 #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--red-dark); color: white; padding: 14px 28px; border-radius: 100px; font-weight: 800; font-size: 0.95rem; z-index: 9999; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; }
 #toast.show { transform: translateX(-50%) translateY(0); }
 
-/* BANNER */
 .bff-banner { text-align: center; margin-bottom: 24px; }
 .banner-date { background: var(--red); color: white; display: inline-block; padding: 6px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 10px; text-transform: uppercase; }
 
-/* HEARTS */
 .heart-float { position: fixed; animation: heartUp 3s ease-in forwards; pointer-events: none; z-index: 9998; font-size: 1.5rem; }
 @keyframes heartUp { 0% { transform: translateY(0) scale(0); opacity: 1; } 100% { transform: translateY(-80vh) scale(1.5); opacity: 0; } }
 
-/* PROGRESS */
 .surprise-progress { display: flex; gap: 6px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
 .sp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink-soft); transition: all 0.4s; }
 .sp-dot.done { background: var(--red); }
 .sp-dot.active { background: var(--pink); transform: scale(1.4); }
 
-/* MEMORY */
 .memory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
 .memory-item { background: var(--cream); border-radius: 16px; padding: 16px 14px; text-align: center; border: 2px solid var(--pink-soft); animation: popIn 0.4s ease forwards; opacity: 0; }
 @keyframes popIn { from { transform: scale(0) rotate(-10deg); opacity: 0; } to { transform: scale(1) rotate(0deg); opacity: 1; } }
 .memory-icon { font-size: 2rem; display: block; margin-bottom: 6px; }
 .memory-text { font-size: 0.8rem; font-weight: 800; color: var(--red-dark); }
 
-/* ANGRY */
-.angry-cat { font-size: 4rem; animation: angryShake 0.3s ease-in-out infinite; display: block; }
-@keyframes angryShake { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+.no-btn { padding: 12px 28px; border-radius: 100px; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.95rem; cursor: pointer; border: 2px solid var(--yellow); background: var(--yellow-light); color: var(--red-dark); transition: all 0.15s; white-space: nowrap; }
 
-/* ===== BOUQUET ===== */
-.bouquet-container {
-  position: relative;
-  width: 200px;
-  height: 220px;
-  margin: 0 auto 10px;
-}
-.bouquet-svg { width: 200px; height: 220px; filter: drop-shadow(0 8px 20px rgba(201,24,74,0.3)); }
-
-/* animated flower petal drop */
-@keyframes petalDrop {
-  0% { opacity:0; transform: translateY(-30px) rotate(0deg) scale(0); }
-  60% { opacity:1; transform: translateY(0) rotate(180deg) scale(1.2); }
-  100% { opacity:1; transform: translateY(0) rotate(360deg) scale(1); }
-}
-.bouquet-petal-anim { animation: petalDrop 0.7s ease-out forwards; }
-
-/* TEASE / CHASE MECHANICS */
-.no-btn-chase {
-  position: relative;
-  display: inline-block;
-}
-.no-btn {
-  padding: 12px 28px;
-  border-radius: 100px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 0.95rem;
-  cursor: pointer;
-  border: 2px solid var(--yellow);
-  background: var(--yellow-light);
-  color: var(--red-dark);
-  transition: all 0.15s;
-  white-space: nowrap;
-}
-
-/* TEASE BOX — used on tease slides */
-.tease-box {
-  background: white;
-  border-radius: 30px;
-  padding: 28px 24px;
-  max-width: 380px;
-  width: 100%;
-  box-shadow: 0 10px 50px rgba(201,24,74,0.2);
-  border: 3px solid var(--pink-soft);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.tease-box::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 8px;
-  background: repeating-linear-gradient(90deg, var(--red) 0, var(--red) 20px, var(--pink) 20px, var(--pink) 40px, var(--yellow) 40px, var(--yellow) 60px);
-}
+.tease-box { background: white; border-radius: 30px; padding: 28px 24px; max-width: 380px; width: 100%; box-shadow: 0 10px 50px rgba(201,24,74,0.2); border: 3px solid var(--pink-soft); text-align: center; position: relative; overflow: hidden; }
+.tease-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(90deg, var(--red) 0, var(--red) 20px, var(--pink) 20px, var(--pink) 40px, var(--yellow) 40px, var(--yellow) 60px); }
 .tease-emoji { font-size: 4rem; display: block; margin: 8px 0; }
 
-/* PREVIEW SLIDES */
 .preview-container { width: 100%; max-width: 460px; }
 .preview-slide { display: none; animation: slideIn 0.5s ease; }
 .preview-slide.active { display: block; }
@@ -221,29 +148,16 @@ textarea.input-field { resize: vertical; min-height: 100px; }
 .preview-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--pink-soft); border: none; cursor: pointer; transition: all 0.3s; }
 .preview-dot.active { background: var(--red); transform: scale(1.3); }
 
-/* GLITTER TEXT */
-@keyframes glitter {
-  0%,100% { text-shadow: 0 0 8px #FFD95A, 0 0 20px #FF8FAB; }
-  50% { text-shadow: 0 0 20px #C9184A, 0 0 40px #FFD95A, 0 0 60px #FF8FAB; }
-}
+@keyframes glitter { 0%,100% { text-shadow: 0 0 8px #FFD95A, 0 0 20px #FF8FAB; } 50% { text-shadow: 0 0 20px #C9184A, 0 0 40px #FFD95A, 0 0 60px #FF8FAB; } }
 .glitter-text { animation: glitter 2s ease-in-out infinite; }
 
-/* SHAKE */
-@keyframes shake {
-  0%,100% { transform: translateX(0); }
-  20% { transform: translateX(-10px); }
-  40% { transform: translateX(10px); }
-  60% { transform: translateX(-8px); }
-  80% { transform: translateX(8px); }
-}
-.shake { animation: shake 0.4s ease; }
+.bouquet-container { position: relative; width: 200px; height: 220px; margin: 0 auto 10px; }
+.bouquet-svg { width: 200px; height: 220px; filter: drop-shadow(0 8px 20px rgba(201,24,74,0.3)); }
 
 @media (max-width: 480px) {
   .title-main { font-size: 1.6rem; }
-  .card, .price-card, .success-card { padding: 24px 18px; }
+  .card, .request-card, .success-card, 
   .cert-title { font-size: 1.8rem; }
-  .coupon-row { flex-direction: column; }
-  .coupon-row .btn { width: 100%; }
   .bouquet-container { width: 160px; height: 176px; }
   .bouquet-svg { width: 160px; height: 176px; }
 }
@@ -329,67 +243,34 @@ textarea.input-field { resize: vertical; min-height: 100px; }
         <div style="font-family:'Pacifico',cursive;font-size:1.2rem;color:var(--red-dark);margin-bottom:12px;">A Bouquet Just for You 💐</div>
         <div class="bouquet-container">
           <svg class="bouquet-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-            <!-- Stems -->
             <path d="M100 180 Q95 150 85 120" stroke="#4a7c59" stroke-width="3" fill="none" stroke-linecap="round"/>
             <path d="M100 180 Q100 150 100 115" stroke="#4a7c59" stroke-width="3" fill="none" stroke-linecap="round"/>
             <path d="M100 180 Q105 150 115 120" stroke="#4a7c59" stroke-width="3" fill="none" stroke-linecap="round"/>
             <path d="M100 180 Q90 155 75 130" stroke="#4a7c59" stroke-width="2.5" fill="none" stroke-linecap="round"/>
             <path d="M100 180 Q110 155 125 130" stroke="#4a7c59" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <!-- Leaves -->
             <ellipse cx="80" cy="145" rx="12" ry="5" fill="#5a9e6f" transform="rotate(-40 80 145)"/>
             <ellipse cx="120" cy="145" rx="12" ry="5" fill="#5a9e6f" transform="rotate(40 120 145)"/>
             <ellipse cx="90" cy="135" rx="10" ry="4" fill="#6ab87f" transform="rotate(-20 90 135)"/>
-            <!-- Ribbon/Wrap -->
             <path d="M78 185 Q100 195 122 185 L118 200 Q100 210 82 200 Z" fill="#FF8FAB"/>
             <path d="M82 200 Q100 207 118 200" stroke="#C9184A" stroke-width="1.5" fill="none"/>
             <path d="M100 185 L100 210" stroke="#C9184A" stroke-width="1.5"/>
-            <!-- Rose 1 center -->
-            <circle cx="85" cy="108" r="14" fill="#C9184A"/>
-            <circle cx="85" cy="108" r="10" fill="#e0204e"/>
-            <circle cx="85" cy="108" r="6" fill="#C9184A"/>
-            <circle cx="85" cy="108" r="3" fill="#8B0028"/>
-            <!-- Rose 1 petals -->
-            <ellipse cx="71" cy="108" rx="8" ry="5" fill="#e0204e" transform="rotate(-15 71 108)"/>
-            <ellipse cx="99" cy="108" rx="8" ry="5" fill="#e0204e" transform="rotate(15 99 108)"/>
-            <ellipse cx="85" cy="95" rx="5" ry="8" fill="#FF8FAB" transform="rotate(5 85 95)"/>
-            <ellipse cx="85" cy="121" rx="5" ry="8" fill="#FF8FAB" transform="rotate(-5 85 121)"/>
-            <ellipse cx="73" cy="98" rx="6" ry="4" fill="#FF8FAB" transform="rotate(-45 73 98)"/>
-            <ellipse cx="97" cy="98" rx="6" ry="4" fill="#FF8FAB" transform="rotate(45 97 98)"/>
-            <!-- Rose 2 center -->
-            <circle cx="100" cy="103" r="14" fill="#FF8FAB"/>
-            <circle cx="100" cy="103" r="10" fill="#ffaac0"/>
-            <circle cx="100" cy="103" r="6" fill="#FF8FAB"/>
-            <circle cx="100" cy="103" r="3" fill="#C9184A"/>
-            <!-- Rose 2 petals -->
-            <ellipse cx="86" cy="103" rx="8" ry="5" fill="#ffaac0" transform="rotate(-10 86 103)"/>
-            <ellipse cx="114" cy="103" rx="8" ry="5" fill="#ffaac0" transform="rotate(10 114 103)"/>
-            <ellipse cx="100" cy="90" rx="5" ry="8" fill="#FFCCD5" transform="rotate(3 100 90)"/>
-            <ellipse cx="100" cy="116" rx="5" ry="8" fill="#FFCCD5" transform="rotate(-3 100 116)"/>
-            <ellipse cx="88" cy="93" rx="6" ry="4" fill="#FFCCD5" transform="rotate(-45 88 93)"/>
-            <ellipse cx="112" cy="93" rx="6" ry="4" fill="#FFCCD5" transform="rotate(45 112 93)"/>
-            <!-- Rose 3 -->
-            <circle cx="115" cy="108" r="14" fill="#FFD95A"/>
-            <circle cx="115" cy="108" r="10" fill="#ffe07a"/>
-            <circle cx="115" cy="108" r="6" fill="#FFD95A"/>
-            <circle cx="115" cy="108" r="3" fill="#c9a000"/>
-            <ellipse cx="101" cy="108" rx="8" ry="5" fill="#ffe07a" transform="rotate(-15 101 108)"/>
-            <ellipse cx="129" cy="108" rx="8" ry="5" fill="#ffe07a" transform="rotate(15 129 108)"/>
-            <ellipse cx="115" cy="95" rx="5" ry="8" fill="#FFF3C4" transform="rotate(5 115 95)"/>
-            <ellipse cx="115" cy="121" rx="5" ry="8" fill="#FFF3C4" transform="rotate(-5 115 121)"/>
-            <ellipse cx="103" cy="98" rx="6" ry="4" fill="#FFF3C4" transform="rotate(-45 103 98)"/>
-            <ellipse cx="127" cy="98" rx="6" ry="4" fill="#FFF3C4" transform="rotate(45 127 98)"/>
-            <!-- Small filler flowers -->
-            <circle cx="75" cy="125" r="8" fill="#ff9eb5"/>
-            <circle cx="125" cy="125" r="8" fill="#a8d8a8"/>
-            <circle cx="75" cy="125" r="4" fill="#FFD95A"/>
-            <circle cx="125" cy="125" r="4" fill="#4a7c59"/>
-            <!-- Baby's breath dots -->
-            <circle cx="68" cy="118" r="3" fill="white" stroke="#FFCCD5" stroke-width="1"/>
-            <circle cx="73" cy="112" r="2.5" fill="white" stroke="#FFCCD5" stroke-width="1"/>
-            <circle cx="130" cy="115" r="3" fill="white" stroke="#FFCCD5" stroke-width="1"/>
-            <circle cx="135" cy="122" r="2.5" fill="white" stroke="#FFCCD5" stroke-width="1"/>
-            <circle cx="62" cy="126" r="2" fill="white" stroke="#FFCCD5" stroke-width="1"/>
-            <circle cx="138" cy="130" r="2" fill="white" stroke="#FFCCD5" stroke-width="1"/>
+            <circle cx="85" cy="108" r="14" fill="#C9184A"/><circle cx="85" cy="108" r="10" fill="#e0204e"/><circle cx="85" cy="108" r="6" fill="#C9184A"/><circle cx="85" cy="108" r="3" fill="#8B0028"/>
+            <ellipse cx="71" cy="108" rx="8" ry="5" fill="#e0204e" transform="rotate(-15 71 108)"/><ellipse cx="99" cy="108" rx="8" ry="5" fill="#e0204e" transform="rotate(15 99 108)"/>
+            <ellipse cx="85" cy="95" rx="5" ry="8" fill="#FF8FAB" transform="rotate(5 85 95)"/><ellipse cx="85" cy="121" rx="5" ry="8" fill="#FF8FAB" transform="rotate(-5 85 121)"/>
+            <ellipse cx="73" cy="98" rx="6" ry="4" fill="#FF8FAB" transform="rotate(-45 73 98)"/><ellipse cx="97" cy="98" rx="6" ry="4" fill="#FF8FAB" transform="rotate(45 97 98)"/>
+            <circle cx="100" cy="103" r="14" fill="#FF8FAB"/><circle cx="100" cy="103" r="10" fill="#ffaac0"/><circle cx="100" cy="103" r="6" fill="#FF8FAB"/><circle cx="100" cy="103" r="3" fill="#C9184A"/>
+            <ellipse cx="86" cy="103" rx="8" ry="5" fill="#ffaac0" transform="rotate(-10 86 103)"/><ellipse cx="114" cy="103" rx="8" ry="5" fill="#ffaac0" transform="rotate(10 114 103)"/>
+            <ellipse cx="100" cy="90" rx="5" ry="8" fill="#FFCCD5" transform="rotate(3 100 90)"/><ellipse cx="100" cy="116" rx="5" ry="8" fill="#FFCCD5" transform="rotate(-3 100 116)"/>
+            <ellipse cx="88" cy="93" rx="6" ry="4" fill="#FFCCD5" transform="rotate(-45 88 93)"/><ellipse cx="112" cy="93" rx="6" ry="4" fill="#FFCCD5" transform="rotate(45 112 93)"/>
+            <circle cx="115" cy="108" r="14" fill="#FFD95A"/><circle cx="115" cy="108" r="10" fill="#ffe07a"/><circle cx="115" cy="108" r="6" fill="#FFD95A"/><circle cx="115" cy="108" r="3" fill="#c9a000"/>
+            <ellipse cx="101" cy="108" rx="8" ry="5" fill="#ffe07a" transform="rotate(-15 101 108)"/><ellipse cx="129" cy="108" rx="8" ry="5" fill="#ffe07a" transform="rotate(15 129 108)"/>
+            <ellipse cx="115" cy="95" rx="5" ry="8" fill="#FFF3C4" transform="rotate(5 115 95)"/><ellipse cx="115" cy="121" rx="5" ry="8" fill="#FFF3C4" transform="rotate(-5 115 121)"/>
+            <ellipse cx="103" cy="98" rx="6" ry="4" fill="#FFF3C4" transform="rotate(-45 103 98)"/><ellipse cx="127" cy="98" rx="6" ry="4" fill="#FFF3C4" transform="rotate(45 127 98)"/>
+            <circle cx="75" cy="125" r="8" fill="#ff9eb5"/><circle cx="125" cy="125" r="8" fill="#a8d8a8"/>
+            <circle cx="75" cy="125" r="4" fill="#FFD95A"/><circle cx="125" cy="125" r="4" fill="#4a7c59"/>
+            <circle cx="68" cy="118" r="3" fill="white" stroke="#FFCCD5" stroke-width="1"/><circle cx="73" cy="112" r="2.5" fill="white" stroke="#FFCCD5" stroke-width="1"/>
+            <circle cx="130" cy="115" r="3" fill="white" stroke="#FFCCD5" stroke-width="1"/><circle cx="135" cy="122" r="2.5" fill="white" stroke="#FFCCD5" stroke-width="1"/>
+            <circle cx="62" cy="126" r="2" fill="white" stroke="#FFCCD5" stroke-width="1"/><circle cx="138" cy="130" r="2" fill="white" stroke="#FFCCD5" stroke-width="1"/>
           </svg>
         </div>
         <div style="font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--red-dark);margin-top:4px;">These flowers are blooming just for you 🌸</div>
@@ -441,49 +322,13 @@ textarea.input-field { resize: vertical; min-height: 100px; }
     </div>
     <div class="preview-nav" id="previewDots"></div>
     <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;">
-      <button class="btn btn-primary" onclick="goTo('page-pricing')">💳 Get the Full Surprise Link</button>
+      <button class="btn btn-primary" onclick="generateLink()">🎀 Get My Surprise Link!</button>
       <button class="btn btn-outline" onclick="goTo('page-form')" style="width:100%;">✏️ Edit Details</button>
     </div>
   </div>
 </div>
 
-<!-- ======================== PAGE 4: PRICING ======================== -->
-<div id="page-pricing" class="page">
-  <div class="price-card">
-    <span class="ribbon-top">Special Launch Price</span>
-    <div style="text-align:center;margin-top:16px;">
-      <div style="font-size:2rem;margin-bottom:4px;">🎀</div>
-      <div class="title-main" style="font-size:1.4rem;margin-bottom:4px;">BFF Surprise Package</div>
-      <div class="price-original">₹299</div>
-      <div class="price-tag" id="displayPrice">₹49</div>
-      <div style="font-size:0.8rem;color:#aaa;font-weight:700;">(One-time payment)</div>
-    </div>
-    <ul class="price-features">
-      <li>Beautiful 7-page surprise journey</li>
-      <li>Animated bouquet of flowers 💐</li>
-      <li>Cute tease & chase for YES 😂</li>
-      <li>Official BFF Certificate (printable!)</li>
-      <li>Memory wall & friendship story</li>
-      <li>Unique shareable link forever</li>
-      <li>Background music 🎵</li>
-    </ul>
-    <div class="coupon-row">
-      <input type="text" class="coupon-input" id="couponInput" placeholder="COUPON CODE" maxlength="20">
-      <button class="btn btn-secondary btn-sm" onclick="applyCoupon()" style="white-space:nowrap;">Apply</button>
-    </div>
-    <div id="couponMsg" class="coupon-msg"></div>
-    <div style="margin-top:16px;">
-      <button class="btn btn-primary" onclick="initiatePayment()">🔒 Pay ₹<span id="payBtn">49</span> & Generate Link</button>
-    </div>
-    <p style="text-align:center;margin-top:12px;font-size:0.78rem;color:#aaa;font-weight:700;">🔒 Secured by Razorpay · 100% Safe</p>
-    <div style="text-align:center;margin-top:6px;">
-      <img src="https://razorpay.com/assets/razorpay-glyph.svg" alt="Razorpay" style="height:18px;opacity:0.4;vertical-align:middle;" onerror="this.style.display='none'">
-      <span style="font-size:0.72rem;color:#ccc;font-weight:700;margin-left:4px;">Razorpay Payments</span>
-    </div>
-  </div>
-</div>
-
-<!-- ======================== PAGE 5: SUCCESS ======================== -->
+<!-- ======================== PAGE 6: SUCCESS (for self-preview / admin use) ======================== -->
 <div id="page-success" class="page">
   <div class="success-card">
     <div style="font-size:4rem;animation:bounce 1s ease-in-out infinite;display:block;text-align:center;">🎉</div>
@@ -496,7 +341,7 @@ textarea.input-field { resize: vertical; min-height: 100px; }
       <button class="btn btn-outline" onclick="previewSurprise()">👁️ Preview Surprise Page</button>
     </div>
     <div style="margin-top:20px;padding:14px;background:var(--cream);border-radius:14px;text-align:center;">
-      <span style="font-size:0.82rem;font-weight:700;color:#777;">💡 The link is valid forever. Send it via WhatsApp, Instagram DM, or email!</span>
+      <span style="font-size:0.82rem;font-weight:700;color:#777;">💡 Send it via WhatsApp, Instagram DM, or email!</span>
     </div>
   </div>
 </div>
@@ -667,45 +512,26 @@ textarea.input-field { resize: vertical; min-height: 100px; }
   </div>
 </div>
 
-<!-- AUDIO: lofi / cute bgm using Web Audio API as fallback + actual audio tag -->
 <audio id="bgMusic" loop preload="none">
-  <!-- Using a free lofi mp3 from a public CDN -->
   <source src="https://www.bensound.com/bensound-music/bensound-ukulele.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+// Your WhatsApp number (with country code, no spaces or dashes)
+const YOUR_WHATSAPP = '919876543210'; // e.g. '919876543210' for +91 98765 43210
+
+// Your business / display name shown on the pending page
+const YOUR_NAME = 'BFF Surprise';
+// ================================================================
+
 const state = {
   senderName: '', friendName: '', message: '',
   currentSlide: 1, totalSlides: 5,
   currentSurpriseSlide: 1, totalSurpriseSlides: 7,
-  price: 49, couponApplied: false, linkId: null,
   musicOn: false, noCount: 0,
-  audioCtx: null, gainNode: null, oscillators: []
+  audioCtx: null, oscillators: []
 };
 
-// ===== RAZORPAY CONFIG =====
-// 🔑 PASTE YOUR RAZORPAY KEY ID BELOW (from https://dashboard.razorpay.com/app/keys)
-const RAZORPAY_KEY_ID = 'rzp_test_Sv0KAH5KL7ZtiN'; // e.g. 'rzp_live_xxxxxxxxxxxx' or 'rzp_test_xxxxxxxxxxxx'
-// 📝 OPTIONAL: Your business name shown in Razorpay popup
-const RAZORPAY_BUSINESS_NAME = 'BFF Surprise';
-// 📝 OPTIONAL: Your business logo URL (must be https://)
-const RAZORPAY_LOGO = ''; // e.g. 'https://yourdomain.com/logo.png'
-// ===========================
-
-// ===== DISCOUNT CODES =====
-// Add / edit coupon codes here: { 'CODE': { discount: amount, type: 'flat' or 'percent' } }
-const COUPONS = {
-  'BFF20':   { discount: 20,  type: 'flat'    },  // ₹20 off → pays ₹29
-  'LOVE10':  { discount: 10,  type: 'percent' },  // 10% off → pays ₹44
-  'FREE100': { discount: 100, type: 'percent' },  // 100% off → FREE
-  // Add your own codes below 👇
-  // 'MYCODE': { discount: 15, type: 'flat' },
-};
-// ==========================
-
-const BASE_PRICE = 49;
-
-// ===== INIT =====
 window.onload = function() {
   spawnFloaties();
   setDates();
@@ -729,7 +555,6 @@ function checkSurpriseLink() {
   }
 }
 
-// ===== FLOATIES =====
 function spawnFloaties() {
   const emojis = ['🌸','⭐','💖','🐱','❤️','✨','🎀','🌟','💕','🌺','💐'];
   const c = document.getElementById('floaties');
@@ -744,7 +569,6 @@ function spawnFloaties() {
   }
 }
 
-// ===== NAVIGATION =====
 function goTo(pageId) {
   document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); p.style.display=''; });
   const page = document.getElementById(pageId);
@@ -753,7 +577,6 @@ function goTo(pageId) {
   window.scrollTo(0,0);
 }
 
-// ===== MUSIC =====
 function toggleMusic() {
   const btn = document.getElementById('musicBtn');
   const audio = document.getElementById('bgMusic');
@@ -761,56 +584,46 @@ function toggleMusic() {
   if(state.musicOn) {
     audio.volume = 0.35;
     audio.play().catch(() => { playGeneratedMusic(); });
-    btn.textContent = '🔊';
-    btn.classList.remove('muted');
+    btn.textContent = '🔊'; btn.classList.remove('muted');
   } else {
-    audio.pause();
-    stopGeneratedMusic();
-    btn.textContent = '🎵';
-    btn.classList.add('muted');
+    audio.pause(); stopGeneratedMusic();
+    btn.textContent = '🎵'; btn.classList.add('muted');
   }
 }
 
-// Web Audio API fallback — gentle chime loop
 function playGeneratedMusic() {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     state.audioCtx = ctx;
     const gain = ctx.createGain(); gain.gain.value = 0.12; gain.connect(ctx.destination);
-    state.gainNode = gain;
-    // gentle looping melody
-    const notes = [523, 587, 659, 698, 784, 698, 659, 587, 523, 494, 440, 494];
+    const notes = [523,587,659,698,784,698,659,587,523,494,440,494];
     let t = ctx.currentTime;
     function scheduleLoop() {
-      notes.forEach((freq, i) => {
-        const osc = ctx.createOscillator();
-        const g2 = ctx.createGain();
-        osc.type = 'sine'; osc.frequency.value = freq;
-        g2.gain.setValueAtTime(0, t + i * 0.4);
-        g2.gain.linearRampToValueAtTime(0.18, t + i * 0.4 + 0.05);
-        g2.gain.linearRampToValueAtTime(0, t + i * 0.4 + 0.35);
+      notes.forEach((freq,i) => {
+        const osc = ctx.createOscillator(), g2 = ctx.createGain();
+        osc.type='sine'; osc.frequency.value=freq;
+        g2.gain.setValueAtTime(0,t+i*0.4);
+        g2.gain.linearRampToValueAtTime(0.18,t+i*0.4+0.05);
+        g2.gain.linearRampToValueAtTime(0,t+i*0.4+0.35);
         osc.connect(g2); g2.connect(gain);
-        osc.start(t + i * 0.4);
-        osc.stop(t + i * 0.4 + 0.4);
+        osc.start(t+i*0.4); osc.stop(t+i*0.4+0.4);
         state.oscillators.push(osc);
       });
-      t += notes.length * 0.4;
-      if(state.musicOn) setTimeout(scheduleLoop, (notes.length * 0.4 - 0.2) * 1000);
+      t += notes.length*0.4;
+      if(state.musicOn) setTimeout(scheduleLoop,(notes.length*0.4-0.2)*1000);
     }
     scheduleLoop();
   } catch(e) {}
 }
-
 function stopGeneratedMusic() {
-  if(state.audioCtx) { try { state.audioCtx.close(); } catch(e) {} state.audioCtx = null; }
-  state.oscillators = [];
+  if(state.audioCtx) { try{state.audioCtx.close();}catch(e){} state.audioCtx=null; }
+  state.oscillators=[];
 }
 
-// ===== CHAR COUNT =====
 function setupCharCount() {
   const msg = document.getElementById('personalMsg');
   const count = document.getElementById('msgCount');
-  msg.addEventListener('input', () => { count.textContent = msg.value.length + '/400'; });
+  msg.addEventListener('input', () => { count.textContent = msg.value.length+'/400'; });
 }
 
 // ===== GENERATE PREVIEW =====
@@ -818,124 +631,56 @@ function generatePreview() {
   const sender = document.getElementById('senderName').value.trim();
   const friend = document.getElementById('friendName').value.trim();
   const msg = document.getElementById('personalMsg').value.trim();
-  if(!sender) { showToast('Enter your name! 🌸'); document.getElementById('senderName').focus(); return; }
-  if(!friend) { showToast("Enter your BFF's name! 🐱"); document.getElementById('friendName').focus(); return; }
-  if(!msg) { showToast('Write a message from the heart! 💌'); document.getElementById('personalMsg').focus(); return; }
-  state.senderName = sender; state.friendName = friend; state.message = msg;
+  if(!sender){ showToast('Enter your name! 🌸'); document.getElementById('senderName').focus(); return; }
+  if(!friend){ showToast("Enter your BFF's name! 🐱"); document.getElementById('friendName').focus(); return; }
+  if(!msg){ showToast('Write a message from the heart! 💌'); document.getElementById('personalMsg').focus(); return; }
+  state.senderName=sender; state.friendName=friend; state.message=msg;
   showLoading();
-  setTimeout(() => {
-    hideLoading();
-    updatePreview();
-    buildPreviewDots();
-    goTo('page-preview');
-    launchHearts();
-  }, 1200);
+  setTimeout(() => { hideLoading(); updatePreview(); buildPreviewDots(); goTo('page-preview'); launchHearts(); }, 1200);
 }
 
 function updatePreview() {
-  const f = state.friendName, s = state.senderName;
-  document.getElementById('previewFriendName1').textContent = f;
-  document.getElementById('previewFriendName2').textContent = f.toUpperCase();
-  document.getElementById('previewMsg').textContent = state.message;
-  document.getElementById('previewSender').textContent = s;
-  document.getElementById('certFriendName').textContent = f;
-  document.getElementById('certSenderName').textContent = s;
+  const f=state.friendName, s=state.senderName;
+  document.getElementById('previewFriendName1').textContent=f;
+  document.getElementById('previewFriendName2').textContent=f.toUpperCase();
+  document.getElementById('previewMsg').textContent=state.message;
+  document.getElementById('previewSender').textContent=s;
+  document.getElementById('certFriendName').textContent=f;
+  document.getElementById('certSenderName').textContent=s;
 }
 
-// ===== PREVIEW NAV =====
 function buildPreviewDots() {
-  const c = document.getElementById('previewDots'); c.innerHTML = '';
-  for(let i=1;i<=state.totalSlides;i++) {
-    const d = document.createElement('button');
-    d.className = 'preview-dot' + (i===1?' active':'');
-    d.onclick = () => goToSlide(i);
+  const c=document.getElementById('previewDots'); c.innerHTML='';
+  for(let i=1;i<=state.totalSlides;i++){
+    const d=document.createElement('button');
+    d.className='preview-dot'+(i===1?' active':'');
+    d.onclick=()=>goToSlide(i);
     c.appendChild(d);
   }
 }
 function goToSlide(n) {
   document.getElementById('slide-'+state.currentSlide).classList.remove('active');
-  state.currentSlide = n;
+  state.currentSlide=n;
   document.getElementById('slide-'+n).classList.add('active');
-  document.querySelectorAll('.preview-dot').forEach((d,i) => d.classList.toggle('active', i+1===n));
-  document.getElementById('prevBtn').style.opacity = n===1?'0.4':'1';
-  document.getElementById('nextBtn').textContent = n===state.totalSlides?'Done ✓':'Next →';
+  document.querySelectorAll('.preview-dot').forEach((d,i)=>d.classList.toggle('active',i+1===n));
+  document.getElementById('prevBtn').style.opacity=n===1?'0.4':'1';
+  document.getElementById('nextBtn').textContent=n===state.totalSlides?'Done ✓':'Next →';
 }
-function nextSlide() { if(state.currentSlide<state.totalSlides) goToSlide(state.currentSlide+1); else goTo('page-pricing'); }
-function prevSlide() { if(state.currentSlide>1) goToSlide(state.currentSlide-1); }
+function nextSlide(){ if(state.currentSlide<state.totalSlides) goToSlide(state.currentSlide+1); else generateLink(); }
+function prevSlide(){ if(state.currentSlide>1) goToSlide(state.currentSlide-1); }
 
-// ===== COUPON =====
-function applyCoupon() {
-  const code = document.getElementById('couponInput').value.trim().toUpperCase();
-  const msgEl = document.getElementById('couponMsg');
-  const coupon = COUPONS[code];
-  if(!coupon) { msgEl.textContent='❌ Invalid coupon code!'; msgEl.className='coupon-msg coupon-error'; return; }
-  let p = BASE_PRICE;
-  if(coupon.type==='flat') p = Math.max(0, BASE_PRICE - coupon.discount);
-  else p = Math.max(0, BASE_PRICE*(1-coupon.discount/100));
-  p = Math.round(p); state.price = p; state.couponApplied = true;
-  document.getElementById('displayPrice').textContent = '₹'+p;
-  document.getElementById('payBtn').textContent = p;
-  document.querySelector('.btn-primary[onclick="initiatePayment()"]').innerHTML = p === 0 ? '🎉 Claim FREE Surprise!' : '🔒 Pay ₹<span id="payBtn">'+p+'</span> & Generate Link';
-  msgEl.textContent = '🎉 Coupon applied! You saved ₹'+(BASE_PRICE-p)+'!';
-  msgEl.className = 'coupon-msg coupon-success';
-}
-
-// ===== PAYMENT =====
-function initiatePayment() {
-  if(state.price === 0) { processSuccess('FREE_'+generateId()); return; }
-
-  // Check if Razorpay key is configured
-  if(!RAZORPAY_KEY_ID || RAZORPAY_KEY_ID === 'YOUR_RAZORPAY_KEY_ID_HERE') {
-    // ⚠️ KEY NOT SET — show helpful message instead of breaking silently
-    showToast('⚠️ Add your Razorpay Key ID in the script to enable payments!');
-    // DEMO fallback so you can test the flow without a key
-    showLoading();
-    setTimeout(() => { hideLoading(); processSuccess('DEMO_'+generateId()); }, 1200);
-    return;
-  }
-
-  // Load Razorpay SDK dynamically if not already loaded
-  if(!window.Razorpay) {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.onload = () => openRazorpay();
-    script.onerror = () => { showToast('❌ Could not load payment gateway. Check internet connection.'); };
-    document.head.appendChild(script);
-  } else {
-    openRazorpay();
-  }
-}
-
-function openRazorpay() {
-  const options = {
-    key: RAZORPAY_KEY_ID,
-    amount: state.price * 100,          // Razorpay expects amount in paise
-    currency: 'INR',
-    name: RAZORPAY_BUSINESS_NAME,
-    description: 'BFF Surprise Link — Best Friends Day 🎀',
-    image: RAZORPAY_LOGO || undefined,
-    prefill: {},
-    theme: { color: '#C9184A' },
-    modal: {
-      ondismiss: function() { showToast('Payment cancelled 🙁 Try again!'); }
-    },
-    handler: function(response) {
-      // Payment successful — response.razorpay_payment_id is the payment ID
-      processSuccess(response.razorpay_payment_id);
-    }
-  };
-  const rzp = new window.Razorpay(options);
-  rzp.on('payment.failed', function(response) {
-    showToast('❌ Payment failed: ' + (response.error.description || 'Please try again'));
-  });
-  rzp.open();
-}
-
-function processSuccess(paymentId) {
+// ===== GENERATE & SHOW LINK =====
+function generateLink() {
   showLoading();
   const id = generateId();
-  try { localStorage.setItem('bff_'+id, JSON.stringify({ senderName:state.senderName, friendName:state.friendName, message:state.message, paymentId, createdAt:new Date().toISOString() })); } catch(e) {}
-  state.linkId = id;
+  try {
+    localStorage.setItem('bff_'+id, JSON.stringify({
+      senderName: state.senderName,
+      friendName: state.friendName,
+      message: state.message,
+      createdAt: new Date().toISOString()
+    }));
+  } catch(e) {}
   const link = window.location.origin + window.location.pathname + '?id=' + id;
   setTimeout(() => {
     hideLoading();
@@ -944,146 +689,115 @@ function processSuccess(paymentId) {
     document.getElementById('successFriendName').textContent = state.friendName;
     goTo('page-success');
     launchConfetti(); launchHearts();
-  }, 1000);
+  }, 900);
 }
 
 // ===== SURPRISE PAGE =====
 function showSurprisePage(data) {
-  document.querySelectorAll('.page').forEach(p => { p.style.display='none'; p.classList.remove('active'); });
+  document.querySelectorAll('.page').forEach(p=>{ p.style.display='none'; p.classList.remove('active'); });
   const page = document.getElementById('page-surprise');
-  page.style.display = 'flex'; page.classList.add('active');
-  document.getElementById('s-heading').textContent = (data.friendName||'').toUpperCase();
-  document.getElementById('s-msg').textContent = data.message || '';
-  document.getElementById('s-sender').textContent = data.senderName || '';
-  document.getElementById('s-certName').textContent = data.friendName || '';
-  document.getElementById('s-certSender').textContent = data.senderName || '';
-  const dateStr = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' });
-  document.getElementById('s-certDate').textContent = dateStr;
-  state.currentSurpriseSlide = 1;
-  document.querySelectorAll('.surprise-slide').forEach(s => s.classList.remove('active'));
+  page.style.display='flex'; page.classList.add('active');
+  document.getElementById('s-heading').textContent=(data.friendName||'').toUpperCase();
+  document.getElementById('s-msg').textContent=data.message||'';
+  document.getElementById('s-sender').textContent=data.senderName||'';
+  document.getElementById('s-certName').textContent=data.friendName||'';
+  document.getElementById('s-certSender').textContent=data.senderName||'';
+  const dateStr=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('s-certDate').textContent=dateStr;
+  state.currentSurpriseSlide=1;
+  document.querySelectorAll('.surprise-slide').forEach(s=>s.classList.remove('active'));
   document.getElementById('ss-1').classList.add('active');
-  state.noCount = 0;
+  state.noCount=0;
 }
 
-// ===== CHASE / TEASE MECHANICS =====
+// ===== CHASE / TEASE =====
 function runAwayNo(btn) {
-  // On mobile, ontouchstart fires; on desktop, onmouseover fires
-  const vw = window.innerWidth, vh = window.innerHeight;
-  const rect = btn.getBoundingClientRect();
-  // pick a random spot far from current position
+  const vw=window.innerWidth, vh=window.innerHeight;
   let nx, ny;
-  do { nx = Math.random() * (vw - 120); ny = Math.random() * (vh - 60); }
-  while(Math.abs(nx - rect.left) < 80 && Math.abs(ny - rect.top) < 60);
-  btn.style.position = 'fixed';
-  btn.style.left = nx + 'px';
-  btn.style.top = ny + 'px';
-  btn.style.zIndex = 9990;
-  btn.style.margin = '0';
-  btn.style.transition = 'left 0.2s ease, top 0.2s ease';
-  showToast(["Can't catch me! 😝", "Nope, run run run! 🏃", "Too slow!! 💨", "Heyyy stop chasing 😂", "You'll never click me! 🤣"][Math.floor(Math.random()*5)]);
+  do{ nx=Math.random()*(vw-120); ny=Math.random()*(vh-60); } while(Math.abs(nx-100)<80&&Math.abs(ny-300)<60);
+  btn.style.position='fixed'; btn.style.left=nx+'px'; btn.style.top=ny+'px';
+  btn.style.zIndex=9990; btn.style.margin='0'; btn.style.transition='left 0.2s ease, top 0.2s ease';
+  showToast(["Can't catch me! 😝","Nope, run run run! 🏃","Too slow!! 💨","Heyyy stop chasing 😂","You'll never click me! 🤣"][Math.floor(Math.random()*5)]);
 }
-
 function bumpNo() {
   state.noCount++;
-  const msgs = ["LMAO you actually caught it 😂", "Okay fine... but still NO 😤", "Whyyy 😭 just say yes!!", "I am OFFENDED 😤"];
-  showToast(msgs[Math.min(state.noCount-1, msgs.length-1)]);
-  if(state.noCount >= 3) {
-    showToast("FINEE I'll take the YES as answer anyway 😤💕");
-    setTimeout(() => { surpriseYes(); }, 800);
-  }
+  const msgs=["LMAO you actually caught it 😂","Okay fine... but still NO 😤","Whyyy 😭 just say yes!!","I am OFFENDED 😤"];
+  showToast(msgs[Math.min(state.noCount-1,msgs.length-1)]);
+  if(state.noCount>=3){ showToast("FINEE I'll take the YES as answer anyway 😤💕"); setTimeout(()=>{ surpriseYes(); },800); }
 }
-
-function surpriseYes() {
-  launchHearts(); launchConfetti();
-  nextSurpriseSlide();
-}
-
+function surpriseYes(){ launchHearts(); launchConfetti(); nextSurpriseSlide(); }
 function nextSurpriseSlide() {
-  const cur = state.currentSurpriseSlide;
-  if(cur >= state.totalSurpriseSlides) return;
+  const cur=state.currentSurpriseSlide;
+  if(cur>=state.totalSurpriseSlides) return;
   document.getElementById('ss-'+cur).classList.remove('active');
-  state.currentSurpriseSlide = cur + 1;
-  // Reset any escaped No buttons back to original position
-  document.querySelectorAll('.no-btn').forEach(b => {
-    b.style.position = ''; b.style.left = ''; b.style.top = ''; b.style.zIndex = ''; b.style.margin = '';
-  });
+  state.currentSurpriseSlide=cur+1;
+  document.querySelectorAll('.no-btn').forEach(b=>{ b.style.position=''; b.style.left=''; b.style.top=''; b.style.zIndex=''; b.style.margin=''; });
   document.getElementById('ss-'+state.currentSurpriseSlide).classList.add('active');
-  if(state.currentSurpriseSlide >= state.totalSurpriseSlides) { launchConfetti(); launchHearts(); }
-  else if(state.currentSurpriseSlide === 3) { animateBouquet(); }
+  if(state.currentSurpriseSlide>=state.totalSurpriseSlides){ launchConfetti(); launchHearts(); }
+  else if(state.currentSurpriseSlide===3){ animateBouquet(); }
 }
-
 function animateBouquet() {
-  // briefly scale up the bouquet on slide 3
-  const b = document.getElementById('surpriseBouquet');
-  if(!b) return;
-  b.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
-  b.style.transform = 'scale(0)';
-  setTimeout(() => { b.style.transform = 'scale(1.1)'; }, 50);
-  setTimeout(() => { b.style.transform = 'scale(1)'; }, 600);
+  const b=document.getElementById('surpriseBouquet'); if(!b) return;
+  b.style.transition='transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+  b.style.transform='scale(0)';
+  setTimeout(()=>{ b.style.transform='scale(1.1)'; },50);
+  setTimeout(()=>{ b.style.transform='scale(1)'; },600);
 }
 
-// ===== PREVIEW SURPRISE =====
+// ===== SUCCESS PAGE (for manual link sending by you) =====
 function previewSurprise() {
-  const data = { senderName: state.senderName, friendName: state.friendName, message: state.message };
+  const data={ senderName:state.senderName, friendName:state.friendName, message:state.message };
   showSurprisePage(data);
 }
-
-// ===== COPY & SHARE =====
 function copyLink() {
-  const link = document.getElementById('shareLink').dataset.link || document.getElementById('shareLink').textContent;
-  navigator.clipboard.writeText(link).then(() => {
+  const link=document.getElementById('shareLink').dataset.link||document.getElementById('shareLink').textContent;
+  navigator.clipboard.writeText(link).then(()=>{
     showToast('Link copied! 📋');
-    document.getElementById('copyBtn').textContent = '✅ Copied!';
-    setTimeout(() => { document.getElementById('copyBtn').textContent = '📋 Copy Link'; }, 2000);
-  }).catch(() => {
-    const el = document.createElement('textarea'); el.value = link;
+    document.getElementById('copyBtn').textContent='✅ Copied!';
+    setTimeout(()=>{ document.getElementById('copyBtn').textContent='📋 Copy Link'; },2000);
+  }).catch(()=>{
+    const el=document.createElement('textarea'); el.value=link;
     document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
     showToast('Link copied! 📋');
   });
 }
-
 function shareViaWhatsApp() {
-  const link = document.getElementById('shareLink').dataset.link || document.getElementById('shareLink').textContent;
-  const text = `🎀 Happy Best Friends Day, ${state.friendName}! I made you a little surprise 💕 Open this: ${link}`;
-  window.open('https://wa.me/?text='+encodeURIComponent(text), '_blank');
+  const link=document.getElementById('shareLink').dataset.link||document.getElementById('shareLink').textContent;
+  const text=`🎀 Happy Best Friends Day, ${state.friendName}! I made you a little surprise 💕 Open this: ${link}`;
+  window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
 }
 
 // ===== EFFECTS =====
 function launchConfetti() {
-  const colors = ['#FF8FAB','#FFD95A','#C9184A','#FFCCD5','#FF0055','#FFE082'];
-  for(let i=0;i<60;i++) {
-    setTimeout(() => {
-      const p = document.createElement('div'); p.className = 'confetti-piece';
-      p.style.left = Math.random()*100+'vw'; p.style.background = colors[Math.floor(Math.random()*colors.length)];
-      p.style.width = (6+Math.random()*10)+'px'; p.style.height = (6+Math.random()*10)+'px';
-      p.style.borderRadius = Math.random()>0.5?'50%':'2px';
-      p.style.animationDuration = (2+Math.random()*3)+'s'; p.style.animationDelay = (Math.random()*0.5)+'s';
-      document.body.appendChild(p); setTimeout(() => p.remove(), 5000);
-    }, i*30);
+  const colors=['#FF8FAB','#FFD95A','#C9184A','#FFCCD5','#FF0055','#FFE082'];
+  for(let i=0;i<60;i++){
+    setTimeout(()=>{
+      const p=document.createElement('div'); p.className='confetti-piece';
+      p.style.left=Math.random()*100+'vw'; p.style.background=colors[Math.floor(Math.random()*colors.length)];
+      p.style.width=(6+Math.random()*10)+'px'; p.style.height=(6+Math.random()*10)+'px';
+      p.style.borderRadius=Math.random()>0.5?'50%':'2px';
+      p.style.animationDuration=(2+Math.random()*3)+'s'; p.style.animationDelay=(Math.random()*0.5)+'s';
+      document.body.appendChild(p); setTimeout(()=>p.remove(),5000);
+    },i*30);
   }
 }
-
 function launchHearts() {
-  const hearts = ['💕','❤️','💖','🌸','✨','💐'];
-  for(let i=0;i<8;i++) {
-    setTimeout(() => {
-      const h = document.createElement('div'); h.className = 'heart-float';
-      h.textContent = hearts[Math.floor(Math.random()*hearts.length)];
-      h.style.left = (20+Math.random()*60)+'vw'; h.style.bottom = '20px';
-      h.style.animationDuration = (2+Math.random()*1.5)+'s';
-      document.body.appendChild(h); setTimeout(() => h.remove(), 4000);
-    }, i*150);
+  const hearts=['💕','❤️','💖','🌸','✨','💐'];
+  for(let i=0;i<8;i++){
+    setTimeout(()=>{
+      const h=document.createElement('div'); h.className='heart-float';
+      h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
+      h.style.left=(20+Math.random()*60)+'vw'; h.style.bottom='20px';
+      h.style.animationDuration=(2+Math.random()*1.5)+'s';
+      document.body.appendChild(h); setTimeout(()=>h.remove(),4000);
+    },i*150);
   }
 }
 
-// ===== HELPERS =====
-function generateId() { return Date.now().toString(36)+Math.random().toString(36).substr(2,5); }
-function showLoading() { document.getElementById('loadingOverlay').classList.add('show'); }
-function hideLoading() { document.getElementById('loadingOverlay').classList.remove('show'); }
-function showToast(msg) {
-  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
+function generateId(){ return Date.now().toString(36)+Math.random().toString(36).substr(2,5); }
+function showLoading(){ document.getElementById('loadingOverlay').classList.add('show'); }
+function hideLoading(){ document.getElementById('loadingOverlay').classList.remove('show'); }
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
 </script>
 </body>
 </html>
