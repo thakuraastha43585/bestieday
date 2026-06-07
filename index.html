@@ -455,7 +455,7 @@ textarea.input-field { resize: vertical; min-height: 100px; }
       <div style="font-size:2rem;margin-bottom:4px;">🎀</div>
       <div class="title-main" style="font-size:1.4rem;margin-bottom:4px;">BFF Surprise Package</div>
       <div class="price-original">₹299</div>
-      <div class="price-tag" id="displayPrice">₹99</div>
+      <div class="price-tag" id="displayPrice">₹49</div>
       <div style="font-size:0.8rem;color:#aaa;font-weight:700;">(One-time payment)</div>
     </div>
     <ul class="price-features">
@@ -473,9 +473,13 @@ textarea.input-field { resize: vertical; min-height: 100px; }
     </div>
     <div id="couponMsg" class="coupon-msg"></div>
     <div style="margin-top:16px;">
-      <button class="btn btn-primary" onclick="initiatePayment()">🔒 Pay ₹<span id="payBtn">99</span> & Generate Link</button>
+      <button class="btn btn-primary" onclick="initiatePayment()">🔒 Pay ₹<span id="payBtn">49</span> & Generate Link</button>
     </div>
-    <p style="text-align:center;margin-top:12px;font-size:0.78rem;color:#aaa;font-weight:700;">🔒 Secured · 100% Safe</p>
+    <p style="text-align:center;margin-top:12px;font-size:0.78rem;color:#aaa;font-weight:700;">🔒 Secured by Razorpay · 100% Safe</p>
+    <div style="text-align:center;margin-top:6px;">
+      <img src="https://razorpay.com/assets/razorpay-glyph.svg" alt="Razorpay" style="height:18px;opacity:0.4;vertical-align:middle;" onerror="this.style.display='none'">
+      <span style="font-size:0.72rem;color:#ccc;font-weight:700;margin-left:4px;">Razorpay Payments</span>
+    </div>
   </div>
 </div>
 
@@ -674,13 +678,32 @@ const state = {
   senderName: '', friendName: '', message: '',
   currentSlide: 1, totalSlides: 5,
   currentSurpriseSlide: 1, totalSurpriseSlides: 7,
-  price: 99, couponApplied: false, linkId: null,
+  price: 49, couponApplied: false, linkId: null,
   musicOn: false, noCount: 0,
   audioCtx: null, gainNode: null, oscillators: []
 };
 
-const COUPONS = { 'BFF50': { discount: 50, type: 'flat' }, 'LOVE20': { discount: 20, type: 'percent' }, 'FREE100': { discount: 100, type: 'percent' } };
-const BASE_PRICE = 99;
+// ===== RAZORPAY CONFIG =====
+// 🔑 PASTE YOUR RAZORPAY KEY ID BELOW (from https://dashboard.razorpay.com/app/keys)
+const RAZORPAY_KEY_ID = 'rzp_test_Sv0KAH5KL7ZtiN'; // e.g. 'rzp_live_xxxxxxxxxxxx' or 'rzp_test_xxxxxxxxxxxx'
+// 📝 OPTIONAL: Your business name shown in Razorpay popup
+const RAZORPAY_BUSINESS_NAME = 'BFF Surprise';
+// 📝 OPTIONAL: Your business logo URL (must be https://)
+const RAZORPAY_LOGO = ''; // e.g. 'https://yourdomain.com/logo.png'
+// ===========================
+
+// ===== DISCOUNT CODES =====
+// Add / edit coupon codes here: { 'CODE': { discount: amount, type: 'flat' or 'percent' } }
+const COUPONS = {
+  'BFF20':   { discount: 20,  type: 'flat'    },  // ₹20 off → pays ₹29
+  'LOVE10':  { discount: 10,  type: 'percent' },  // 10% off → pays ₹44
+  'FREE100': { discount: 100, type: 'percent' },  // 100% off → FREE
+  // Add your own codes below 👇
+  // 'MYCODE': { discount: 15, type: 'flat' },
+};
+// ==========================
+
+const BASE_PRICE = 49;
 
 // ===== INIT =====
 window.onload = function() {
@@ -852,6 +875,7 @@ function applyCoupon() {
   p = Math.round(p); state.price = p; state.couponApplied = true;
   document.getElementById('displayPrice').textContent = '₹'+p;
   document.getElementById('payBtn').textContent = p;
+  document.querySelector('.btn-primary[onclick="initiatePayment()"]').innerHTML = p === 0 ? '🎉 Claim FREE Surprise!' : '🔒 Pay ₹<span id="payBtn">'+p+'</span> & Generate Link';
   msgEl.textContent = '🎉 Coupon applied! You saved ₹'+(BASE_PRICE-p)+'!';
   msgEl.className = 'coupon-msg coupon-success';
 }
@@ -859,8 +883,52 @@ function applyCoupon() {
 // ===== PAYMENT =====
 function initiatePayment() {
   if(state.price === 0) { processSuccess('FREE_'+generateId()); return; }
-  showLoading();
-  setTimeout(() => { hideLoading(); processSuccess('DEMO_'+generateId()); }, 1500);
+
+  // Check if Razorpay key is configured
+  if(!RAZORPAY_KEY_ID || RAZORPAY_KEY_ID === 'YOUR_RAZORPAY_KEY_ID_HERE') {
+    // ⚠️ KEY NOT SET — show helpful message instead of breaking silently
+    showToast('⚠️ Add your Razorpay Key ID in the script to enable payments!');
+    // DEMO fallback so you can test the flow without a key
+    showLoading();
+    setTimeout(() => { hideLoading(); processSuccess('DEMO_'+generateId()); }, 1200);
+    return;
+  }
+
+  // Load Razorpay SDK dynamically if not already loaded
+  if(!window.Razorpay) {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload = () => openRazorpay();
+    script.onerror = () => { showToast('❌ Could not load payment gateway. Check internet connection.'); };
+    document.head.appendChild(script);
+  } else {
+    openRazorpay();
+  }
+}
+
+function openRazorpay() {
+  const options = {
+    key: RAZORPAY_KEY_ID,
+    amount: state.price * 100,          // Razorpay expects amount in paise
+    currency: 'INR',
+    name: RAZORPAY_BUSINESS_NAME,
+    description: 'BFF Surprise Link — Best Friends Day 🎀',
+    image: RAZORPAY_LOGO || undefined,
+    prefill: {},
+    theme: { color: '#C9184A' },
+    modal: {
+      ondismiss: function() { showToast('Payment cancelled 🙁 Try again!'); }
+    },
+    handler: function(response) {
+      // Payment successful — response.razorpay_payment_id is the payment ID
+      processSuccess(response.razorpay_payment_id);
+    }
+  };
+  const rzp = new window.Razorpay(options);
+  rzp.on('payment.failed', function(response) {
+    showToast('❌ Payment failed: ' + (response.error.description || 'Please try again'));
+  });
+  rzp.open();
 }
 
 function processSuccess(paymentId) {
