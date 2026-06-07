@@ -545,13 +545,13 @@ function setDates() {
 }
 
 function checkSurpriseLink() {
-  const id = new URLSearchParams(window.location.search).get('id');
-  if(id) {
+  const params = new URLSearchParams(window.location.search);
+  const data = params.get('data');
+  if(data) {
     try {
-      const raw = localStorage.getItem('bff_' + id);
-      if(raw) showSurprisePage(JSON.parse(raw));
-      else showToast("Link not found or expired!");
-    } catch(e) { showToast("Link not found!"); }
+      const decoded = JSON.parse(atob(decodeURIComponent(data)));
+      showSurprisePage(decoded);
+    } catch(e) { showToast("Link is broken or invalid!"); }
   }
 }
 
@@ -672,16 +672,14 @@ function prevSlide(){ if(state.currentSlide>1) goToSlide(state.currentSlide-1); 
 // ===== GENERATE & SHOW LINK =====
 function generateLink() {
   showLoading();
-  const id = generateId();
-  try {
-    localStorage.setItem('bff_'+id, JSON.stringify({
-      senderName: state.senderName,
-      friendName: state.friendName,
-      message: state.message,
-      createdAt: new Date().toISOString()
-    }));
-  } catch(e) {}
-  const link = window.location.origin + window.location.pathname + '?id=' + id;
+  const payload = JSON.stringify({
+    senderName: state.senderName,
+    friendName: state.friendName,
+    message: state.message,
+    createdAt: new Date().toISOString()
+  });
+  const encoded = encodeURIComponent(btoa(unescape(encodeURIComponent(payload))));
+  const link = window.location.origin + window.location.pathname + '?data=' + encoded;
   setTimeout(() => {
     hideLoading();
     document.getElementById('shareLink').textContent = link;
